@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Holy Mary Institute</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+
+    <!-- 1. AUTHENTICATION SCREEN (Dynamic & Animated) -->
+    <div id="auth-screen" class="screen active">
+        <!-- Animated Background Blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="auth-container glass">
+            <img src="logo.png" alt="Logo" class="college-logo" onerror="this.src='https://via.placeholder.com/150'">
+            <h2>Holy Mary</h2>
+            <p>Enter your college network</p>
+            <input type="email" id="email-input" placeholder="College Email">
+            <input type="password" id="password-input" placeholder="Password">
+            <button id="login-btn" class="ios-btn primary shadow">Log In</button>
+            <button id="signup-btn" class="ios-btn secondary">Sign Up</button>
+        </div>
+    </div>
+
+    <!-- 2. WELCOME SCREEN (With Background Video) -->
+    <div id="welcome-screen" class="screen">
+        <!-- Add your aesthetic video link here -->
+        <video id="bg-video" autoplay loop muted playsinline>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        
+        <div class="welcome-container glass">
+            <h1>Holy Mary Institute of Technology and Science</h1>
+            <p class="welcome-subtext">Connect, Share, and Learn.</p>
+            <button id="get-started-btn" class="ios-btn primary">Get Started</button>
+        </div>
+    </div>
+
+    <!-- 3. T&C MODAL -->
+    <div id="tc-modal" class="modal-overlay">
+        <div class="ios-alert">
+            <h3>Terms & Conditions</h3>
+            <p>No cyberbullying, hate speech, or inappropriate content is allowed. The Admin reserves the right to delete any post.</p>
+            <button id="accept-tc-btn" class="ios-alert-btn">I Agree</button>
+        </div>
+    </div>
+
+    <!-- ILLUMINATI PASSCODE MODAL -->
+    <div id="passcode-modal" class="modal-overlay">
+        <div class="ios-alert">
+            <ion-icon name="eye-outline" style="font-size: 40px; margin-top: 15px; color: var(--ios-text);"></ion-icon>
+            <h3>Access Required</h3>
+            <p>Enter the secret password to enter The Illuminati.</p>
+            <input type="password" id="secret-pass-input" placeholder="Password" style="width: 80%; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid var(--ios-border); text-align: center;">
+            <div style="display: flex; border-top: 1px solid var(--ios-border);">
+                <button id="cancel-passcode" class="ios-alert-btn" style="border-right: 1px solid var(--ios-border); color: var(--ios-gray);">Cancel</button>
+                <button id="submit-passcode" class="ios-alert-btn">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. MAIN APP INTERFACE -->
+    <div id="main-app" class="screen">
+        <header class="ios-header glass-header">
+            <h2 id="header-title">Feed</h2>
+        </header>
+
+        <!-- Dynamic Feed Area -->
+        <main id="feed-container" class="feed-area"></main>
+
+        <!-- Profile Area (Hidden by default, shown when Profile tab active) -->
+        <main id="profile-container" class="feed-area hidden">
+            <div class="profile-header">
+                <div class="profile-avatar"><ion-icon name="person"></ion-icon></div>
+                <h2 id="profile-name">Student</h2>
+                <p id="profile-email">email@holymary.edu</p>
+                <div id="admin-badge-profile" class="admin-badge hidden"><ion-icon name="shield-checkmark"></ion-icon> Administrator</div>
+            </div>
+            
+            <div class="ios-settings-group">
+                <div class="settings-item" id="logout-btn">
+                    <div class="settings-icon logout"><ion-icon name="log-out-outline"></ion-icon></div>
+                    <span>Log Out</span>
+                    <ion-icon name="chevron-forward" class="chevron"></ion-icon>
+                </div>
+            </div>
+        </main>
+
+        <button id="fab-create"><ion-icon name="add"></ion-icon></button>
+
+        <!-- Create Modal -->
+        <div id="create-modal" class="modal-overlay">
+            <div class="ios-sheet">
+                <div class="sheet-header">
+                    <button id="cancel-create">Cancel</button>
+                    <h4>New <span id="create-type-text">Post</span></h4>
+                    <button id="submit-post" class="bold-blue">Post</button>
+                </div>
+                
+                <!-- Normal Post/Confession Inputs -->
+                <div id="standard-inputs">
+                    <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+                    <div id="admin-media-upload" class="hidden">
+                        <label for="image-upload" class="ios-file-label"><ion-icon name="image-outline"></ion-icon> Attach Image</label>
+                        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    </div>
+                    <div id="confession-options" class="hidden ios-toggle-container">
+                        <span>Post Anonymously</span>
+                        <label class="ios-toggle">
+                            <input type="checkbox" id="anon-checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Library Inputs (Admin Only) -->
+                <div id="library-inputs" class="hidden">
+                    <input type="text" id="lib-title" placeholder="Document Title (e.g., Physics Notes)" class="ios-input-full">
+                    <input type="url" id="lib-url" placeholder="Paste Google Form or PDF Link" class="ios-input-full">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="ios-bottom-nav">
+            <div class="nav-item active" data-tab="posts">
+                <ion-icon name="home"></ion-icon>
+                <span>Posts</span>
+            </div>
+            <div class="nav-item" data-tab="confessions">
+                <ion-icon name="chatbubbles"></ion-icon>
+                <span>Chat</span>
+            </div>
+            <div class="nav-item" data-tab="library">
+                <ion-icon name="library"></ion-icon>
+                <span>Library</span>
+            </div>
+            <div class="nav-item" data-tab="illuminati">
+                <ion-icon name="eye"></ion-icon>
+                <span>Illuminati</span>
+            </div>
+            <div class="nav-item" data-tab="profile">
+                <ion-icon name="person-circle"></ion-icon>
+                <span>Profile</span>
+            </div>
+        </nav>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
