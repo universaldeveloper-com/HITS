@@ -1,0 +1,124 @@
+/* iOS Dark Mode Variables */
+:root {
+    --ios-blue: #0A84FF;
+    --ios-bg: #000000;
+    --ios-surface: #1C1C1E;
+    --ios-surface-glass: rgba(28, 28, 30, 0.75);
+    --ios-text: #FFFFFF;
+    --ios-gray: #8E8E93;
+    --ios-border: #38383A;
+    
+    /* Royal Gold Theme for Admins */
+    --royal-gold-bg: linear-gradient(135deg, #FBE18D 0%, #D4AF37 50%, #997A15 100%);
+    --royal-gold-text: #1A1400; /* Dark text for high contrast on gold */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+body { background-color: var(--ios-bg); color: var(--ios-text); overflow-x: hidden; }
+
+/* Screens & Glassmorphism */
+.screen { display: none; min-height: 100vh; width: 100vw; position: relative; }
+.screen.active { display: flex; flex-direction: column; animation: fadeIn 0.4s ease-in-out; }
+
+/* AUTH PAGE - Background Image & Liquid Glass */
+#auth-screen {
+    /* REPLACE THE URL WITH YOUR DESIRED BACKGROUND IMAGE */
+    background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
+}
+#auth-screen::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darkens image slightly */
+    z-index: 0;
+}
+
+/* Glass Containers */
+.auth-container, .welcome-container { margin: auto; padding: 40px 30px; border-radius: 28px; width: 90%; max-width: 400px; text-align: center; z-index: 10; position: relative; }
+.glass { 
+    background: rgba(20, 20, 20, 0.4); 
+    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4); 
+}
+.glass-header { background: var(--ios-surface-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--ios-border); }
+
+.college-logo { width: 100px; height: 100px; border-radius: 22px; margin-bottom: 20px; object-fit: cover; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.5px; }
+
+/* Inputs */
+input[type="email"], input[type="password"], input[type="text"], input[type="url"], textarea { 
+    width: 100%; padding: 16px; margin-bottom: 15px; border: none; border-radius: 14px; 
+    font-size: 16px; background: rgba(255,255,255,0.1); color: white; 
+}
+input::placeholder, textarea::placeholder { color: #A0A0A5; }
+
+/* Liquid Glass Buttons */
+.ios-btn { width: 100%; padding: 16px; border-radius: 16px; font-size: 17px; font-weight: 600; border: none; cursor: pointer; margin-bottom: 15px; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); }
+.ios-btn:active { transform: scale(0.94); } /* Spring animation */
+
+.ios-btn.primary { 
+    background: rgba(10, 132, 255, 0.6); 
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-top: 1px solid rgba(255, 255, 255, 0.4); 
+    color: white; 
+    box-shadow: 0 8px 32px rgba(10, 132, 255, 0.3); 
+}
+.ios-btn.secondary { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* iOS Modals */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 100; justify-content: center; align-items: center; }
+.ios-alert { background: var(--ios-surface); width: 280px; border-radius: 18px; text-align: center; border: 1px solid var(--ios-border); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.ios-alert h3 { font-size: 17px; padding: 20px 20px 5px; }
+.ios-alert p { font-size: 13px; padding: 0 20px 20px; color: var(--ios-gray); line-height: 1.4; border-bottom: 1px solid var(--ios-border); }
+.ios-alert-btn { flex: 1; background: transparent; border: none; padding: 15px; font-size: 17px; font-weight: 600; color: var(--ios-blue); cursor: pointer; width: 100%; }
+
+/* App Layout */
+.ios-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 10px; position: sticky; top: 0; z-index: 10; }
+.feed-area { flex-grow: 1; padding: 15px; padding-bottom: 100px; overflow-y: auto; }
+
+/* Normal Post Cards */
+.post-card { background: var(--ios-surface); border-radius: 18px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--ios-border); }
+.post-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 15px; color: var(--ios-gray); }
+.post-author { font-weight: 600; color: var(--ios-text); display: flex; align-items: center; gap: 5px; }
+.post-content { font-size: 16px; line-height: 1.4; margin-bottom: 10px; }
+.post-image { width: 100%; border-radius: 12px; margin-top: 10px; border: 1px solid var(--ios-border); }
+.post-actions { display: flex; gap: 20px; border-top: 1px solid var(--ios-border); padding-top: 12px; margin-top: 5px; }
+.action-btn { background: none; border: none; display: flex; align-items: center; gap: 5px; font-size: 16px; color: var(--ios-gray); cursor: pointer; transition: 0.2s; }
+.action-btn:active { transform: scale(0.8); }
+.action-btn.liked { color: #FF2D55; }
+.delete-btn { color: #FF453A; margin-left: auto; }
+
+/* ROYAL GOLD ADMIN POSTS */
+.post-card.admin-post { background: var(--royal-gold-bg); border: 1px solid #FFE87C; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
+.post-card.admin-post .post-author { color: var(--royal-gold-text); font-weight: 800; }
+.post-card.admin-post .post-content { color: var(--royal-gold-text); font-weight: 500; text-shadow: 0 1px 1px rgba(255,255,255,0.3); }
+.post-card.admin-post .post-header { color: var(--royal-gold-text); opacity: 0.8; }
+.post-card.admin-post .post-actions { border-top: 1px solid rgba(0,0,0,0.15); }
+.post-card.admin-post .action-btn { color: rgba(26, 20, 0, 0.8); }
+.post-card.admin-post .action-btn.liked { color: #D90000; }
+.admin-badge-ui { background: rgba(0,0,0,0.8); color: #FFDF00; padding: 3px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; border: 1px solid #D4AF37; }
+
+/* Bottom Nav */
+.ios-bottom-nav { position: fixed; bottom: 0; width: 100%; background: var(--ios-surface-glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border-top: 1px solid var(--ios-border); display: flex; justify-content: space-around; padding: 12px 0 25px 0; z-index: 10; }
+.nav-item { display: flex; flex-direction: column; align-items: center; color: var(--ios-gray); font-size: 10px; cursor: pointer; width: 20%; transition: color 0.2s; }
+.nav-item ion-icon { font-size: 26px; margin-bottom: 4px; transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1); }
+.nav-item.active { color: var(--ios-text); }
+.nav-item.active ion-icon { transform: scale(1.15); color: var(--ios-blue); }
+
+/* Create Modal (Bottom Sheet) */
+.ios-sheet { position: absolute; bottom: 0; width: 100%; background: var(--ios-surface); border-radius: 24px 24px 0 0; padding: 20px; animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1); border-top: 1px solid var(--ios-border); }
+.sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 17px; }
+.sheet-header button { background: none; border: none; font-size: 17px; color: var(--ios-blue); font-weight: 600; cursor: pointer; }
+textarea { background: transparent; }
+
+/* Floating Button */
+#fab-create { position: fixed; bottom: 100px; right: 20px; width: 55px; height: 55px; border-radius: 28px; background: rgba(10, 132, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255,255,255,0.2); font-size: 28px; box-shadow: 0 10px 20px rgba(10,132,255,0.4); z-index: 5; cursor: pointer; transition: 0.2s; }
+#fab-create:active { transform: scale(0.9); }
+
+/* Utilities */
+.hidden { display: none !important; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
