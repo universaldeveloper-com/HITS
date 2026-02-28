@@ -5,13 +5,15 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstati
 
 // 🔴 REPLACE THIS WITH YOUR FIREBASE CONFIG
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+apiKey: "AIzaSyCHWu-s-crmNm56ZiybaY2m6cw8EwGSYw4",
+authDomain: "collage-social-app.firebaseapp.com",
+projectId: "collage-social-app",
+storageBucket: "collage-social-app.firebasestorage.app",
+messagingSenderId: "881595097403",
+appId: "1:881595097403:web:c31202b24643109168d71e",
+measurementId: "G-4FWQ1YRCTL"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -21,8 +23,8 @@ const storage = getStorage(app);
 // ==========================================
 // 🔴 ADMIN & MODERATION CONFIGURATION
 // ==========================================
-const ADMIN_EMAIL = "admin@holymary.edu"; 
-const ILLUMINATI_PASSWORD = "777"; 
+const ADMIN_EMAIL = "cryptomail769@gmail.com"; 
+const ILLUMINATI_PASSWORD = "3697"; 
 
 // ADD ALL THE WORDS YOU WANT TO BAN IN THIS LIST:
 const BANNED_WORDS = [
